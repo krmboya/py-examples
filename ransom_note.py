@@ -12,8 +12,8 @@ Yes/No - whether there enough words in mag matching all in ransom note (case-sen
 """
 
 m, n = [int(i) for i in sys.stdin.readline().strip().split()]
-m_words = [w for w in sys.stdin.readline().strip().split()]
-n_words = [w for w in sys.stdin.readline().strip().split()]
+m_words = [w for w in sys.stdin.readline().strip().split()][:m]
+n_words = [w for w in sys.stdin.readline().strip().split()][:n]
 
 n_words_count, m_words_count = {}, {}
 
@@ -25,10 +25,8 @@ for w in m_words:
     
 
 output = "Yes" if all([
-    n_words_count[w] == m_words_count[w] if w in m_words_count else False 
+    n_words_count[w] <= m_words_count[w] if w in m_words_count else False 
     for w in n_words_count
 ]) else "No"
 
 sys.stdout.write(output + "\n")
-
-
