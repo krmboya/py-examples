@@ -69,7 +69,7 @@ def edits1(word):  # probably most interesting part
     inserts = [L + c + R for L, R in splits for c in letters]
 
     # and now rid all the duplicates among the above lists
-    return set(deletes, transposes, replaces, inserts)
+    return set(deletes + transposes + replaces + inserts)
 
 
 def edits2(word):
